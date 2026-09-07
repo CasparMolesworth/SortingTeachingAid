@@ -9,18 +9,20 @@ namespace SortingVisualiser
 {
     public static class SortingAlgorithms
     {
-        public static void BubbleSort(int[] array, out double milliseconds)
+        private static Stopwatch sw = new Stopwatch();
+
+
+        public static void BubbleSort(int[] array, out double ticks)
         {
             int n = array.Length;
-            milliseconds = 0;
-            Stopwatch sw = Stopwatch.StartNew();
+            ticks = 0;
+            sw.Start();
             for (int i = 0; i < n - 1; i++)
             {
                 for (int j = 0; j < n - i - 1; j++)
                 {
                     if (array[j] > array[j + 1])
                     {
-                        // Swap array[j] and array[j + 1]
                         int temp = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
@@ -28,15 +30,15 @@ namespace SortingVisualiser
                 }
             }
             sw.Stop();
-            milliseconds = sw.ElapsedMilliseconds;
-
+            ticks = sw.ElapsedTicks;
+            sw.Reset();
         }
 
-        public static void InsertionSort(int[] array, out double milliseconds)
+        public static void InsertionSort(int[] array, out double ticks)
         {
             int n = array.Length;
-            milliseconds = 0;
-            Stopwatch sw = Stopwatch.StartNew();
+            ticks = 0;
+            sw.Start();
             for (int i = 1; i < n; ++i)
             {
                 int key = array[i];
@@ -51,7 +53,8 @@ namespace SortingVisualiser
                 array[j + 1] = key;
             }
             sw.Stop();
-            milliseconds = sw.ElapsedMilliseconds;
+            ticks = sw.ElapsedTicks;
+            sw.Reset();
         }
 
         public static void MergeSort(int[] array)

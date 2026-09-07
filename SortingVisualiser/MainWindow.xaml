@@ -20,6 +20,8 @@
             <Button x:Name="BubbleSortButton" Content="Bubble Sort" Margin="5" Width="120" Height="30" Click="BubbleSortButton_Click" IsEnabled="False"/>
             <Button x:Name="InsertionSortButton" Content="Insertion Sort" Margin="5" Width="120" Height="30" Click="InsertionSortButton_Click" IsEnabled="False"/>
             <Button x:Name="MergeSortButton" Content="Merge Sort" Margin="5" Width="120" Height="30" Click="MergeSortButton_Click" IsEnabled="False"/>
+            <Label x:Name="EnableAnimationLabel" Content="Enable Animation:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
+            <CheckBox x:Name="EnableAnimationCheckBox" VerticalAlignment="Center" Height="30" Margin="5" Checked="AnimationEnabledCheckBox_Checked" Unchecked="AnimationEnabledCheckBox_Unchecked"/>
             <Label x:Name="ElapsedTimeLabel" Content="Elapsed Time:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
             <Label x:Name="ActualTimeLabel" Content="0 ms" VerticalAlignment="Center" Height="30" Margin="5" />
         </StackPanel>

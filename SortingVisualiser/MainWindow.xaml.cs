@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SortingVisualiser;
 using System.Linq;
+using System.Diagnostics;
 
 namespace SortingVisualiser
 {
@@ -23,6 +24,8 @@ namespace SortingVisualiser
             InitializeComponent();
         }
 
+        private bool animationsEnabled = false;
+
         // Randomise button is clicked and a random array is displayed
         private void RandomiseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -30,7 +33,7 @@ namespace SortingVisualiser
             ClearPanel();
 
             // Get size from text box
-            if (int.TryParse(SizeInput.Text, out int arraySize) && arraySize > 0 && arraySize <= 500)
+            if (int.TryParse(SizeInput.Text, out int arraySize) && arraySize > 0 && arraySize <= 800)
             {
                 int[] arr = new int[arraySize];
                 GeneratingArray.FillArray(arr);
@@ -50,31 +53,33 @@ namespace SortingVisualiser
 
         private void BubbleSortButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get array from the display panel bit by getting the text stored in each bar
-            int[] currentArray = VisualisingPanel.Children
-                .Cast<Border>()
-                .Select(b => int.Parse(((TextBlock)b.Child).Text))
-                .ToArray();
+            if (!animationsEnabled)
+            {
+                // Get array from the display panel bit by getting the text stored in each bar
+                int[] currentArray = GetCurrentArray();
 
-            // Bubble sort
-            double milliseconds;
-            SortingAlgorithms.BubbleSort(currentArray, out milliseconds);
+                // Bubble sort
+                double ticks;
+                SortingAlgorithms.BubbleSort(currentArray, out ticks);
 
-            // Display the sorted array on the visualising panel
-            ClearPanel();
-            VisualiseArray(currentArray);
+                // Display the sorted array on the visualising panel
+                ClearPanel();
+                VisualiseArray(currentArray);
 
-            DisplayElapsedTime(milliseconds);
-            DisableSorts();
+                DisplayElapsedTime(ticks);
+                DisableSorts();
+            }
+            else
+            {
+
+            }
+            
         }
 
         private void InsertionSortButton_Click(object sender, RoutedEventArgs e)
         {
             // Get array from the display panel bit by getting the text stored in each bar
-            int[] currentArray = VisualisingPanel.Children
-                .Cast<Border>()
-                .Select(b => int.Parse(((TextBlock)b.Child).Text))
-                .ToArray();
+            int[] currentArray = GetCurrentArray();
 
             // Insertion sort
             double milliseconds;
@@ -91,15 +96,17 @@ namespace SortingVisualiser
         private void MergeSortButton_Click(object sender, RoutedEventArgs e)
         {
             // Get array from the display panel bit by getting the text stored in each bar
-            int[] currentArray = VisualisingPanel.Children
-                .Cast<Border>()
-                .Select(b => int.Parse(((TextBlock)b.Child).Text))
-                .ToArray();
+            int[] currentArray = GetCurrentArray();
             // Merge sort
+            Stopwatch sw = Stopwatch.StartNew();
             SortingAlgorithms.MergeSort(currentArray);
+            sw.Stop();
+
             // Display the sorted array on the visualising panel
             ClearPanel();
             VisualiseArray(currentArray);
+
+            DisplayElapsedTime(sw.ElapsedTicks);
             DisableSorts();
         }
 
@@ -129,9 +136,39 @@ namespace SortingVisualiser
             }
         }
 
-        private void DisplayElapsedTime(double milliseconds)
+        private int[] GetCurrentArray()
         {
-            ActualTimeLabel.Content = $"{milliseconds} ms";
+            int[] currentArray = VisualisingPanel.Children
+                .Cast<Border>()
+                .Select(b => int.Parse(((TextBlock)b.Child).Text))
+                .ToArray();
+            return currentArray;
+        }
+
+        private void AnimationEnabledCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            animationsEnabled = true;
+            ActualTimeLabel.Content = "n/a";
+        }
+
+        private void AnimationEnabledCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            animationsEnabled = false;
+            ActualTimeLabel.Content = "0 ms";
+
+        }
+
+        private void DisplayElapsedTime(double ticks)
+        {
+            double microseconds = ticks / 10;
+            if (microseconds < 1000)
+            {
+                ActualTimeLabel.Content = $"{microseconds:F2} μs";
+            }
+            else
+            {
+                ActualTimeLabel.Content = $"{microseconds / 1000:F2} ms";
+            }
         }
 
         private void ClearPanel()
