@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CustomRandom/CustomRandom.csproj" Id="8d53aa58-3509-440f-8aeb-1380091708c3" />
+  <Project Path="SortingVisualiser/SortingVisualiser.csproj" />
+</Solution>
