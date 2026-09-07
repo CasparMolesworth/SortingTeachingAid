@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using SortingVisualiser;
 using System.Linq;
 using System.Diagnostics;
+using SortingVisualiser.SortingAlgorithms;
 
 namespace SortingVisualiser
 {
@@ -60,7 +61,7 @@ namespace SortingVisualiser
 
                 // Bubble sort
                 double ticks;
-                SortingAlgorithms.BubbleSort(currentArray, out ticks);
+                BubbleSorts.BubbleSort(currentArray, out ticks);
 
                 // Display the sorted array on the visualising panel
                 ClearPanel();
@@ -71,46 +72,60 @@ namespace SortingVisualiser
             }
             else
             {
-
+                int[] currentArray = GetCurrentArray();
             }
             
         }
 
         private void InsertionSortButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get array from the display panel bit by getting the text stored in each bar
-            int[] currentArray = GetCurrentArray();
+            if (!animationsEnabled)
+            {
+                // Get array from the display panel bit by getting the text stored in each bar
+                int[] currentArray = GetCurrentArray();
 
-            // Insertion sort
-            double milliseconds;
-            SortingAlgorithms.InsertionSort(currentArray, out milliseconds);
+                // Insertion sort
+                double milliseconds;
+                InsertionSorts.InsertionSort(currentArray, out milliseconds);
 
-            // Display the sorted array on the visualising panel
-            ClearPanel();
-            VisualiseArray(currentArray);
+                // Display the sorted array on the visualising panel
+                ClearPanel();
+                VisualiseArray(currentArray);
 
-            DisplayElapsedTime(milliseconds);
-            DisableSorts();
+                DisplayElapsedTime(milliseconds);
+                DisableSorts();
+            }
+            else
+            {
+                MessageBox.Show("Animated Insertion Sort is not implemented yet.", "Not Implemented", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void MergeSortButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get array from the display panel bit by getting the text stored in each bar
-            int[] currentArray = GetCurrentArray();
-            // Merge sort
-            Stopwatch sw = Stopwatch.StartNew();
-            SortingAlgorithms.MergeSort(currentArray);
-            sw.Stop();
+            if (!animationsEnabled)
+            {
+                // Get array from the display panel bit by getting the text stored in each bar
+                int[] currentArray = GetCurrentArray();
+                // Merge sort
+                Stopwatch sw = Stopwatch.StartNew();
+                MergeSorts.MergeSort(currentArray);
+                sw.Stop();
 
-            // Display the sorted array on the visualising panel
-            ClearPanel();
-            VisualiseArray(currentArray);
+                // Display the sorted array on the visualising panel
+                ClearPanel();
+                VisualiseArray(currentArray);
 
-            DisplayElapsedTime(sw.ElapsedTicks);
-            DisableSorts();
+                DisplayElapsedTime(sw.ElapsedTicks);
+                DisableSorts();
+            }
+            else
+            {
+                MessageBox.Show("Animated Merge Sort is not implemented yet.", "Not Implemented", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
-
+        #region Visual Methods
         // Display the array on the visualising panel
         private void VisualiseArray(int[] array)
         {
@@ -189,6 +204,7 @@ namespace SortingVisualiser
             InsertionSortButton.IsEnabled = false;
             MergeSortButton.IsEnabled = false;
         }
+        #endregion
 
     }
 }
