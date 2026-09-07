@@ -29,6 +29,7 @@ namespace SortingVisualiser
             }
             sw.Stop();
             milliseconds = sw.ElapsedMilliseconds;
+
         }
 
         public static void InsertionSort(int[] array, out double milliseconds)
