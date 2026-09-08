@@ -16,12 +16,12 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
             <Button x:Name="RandomiseButton" Content="Randomise Array" Margin="5" Width="120" Height="30" Click="RandomiseButton_Click"/>
             <Label Content="Size:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
-            <TextBox x:Name="SizeInput" Text="10" Width="60" Margin="5" TextAlignment="Center"/>
+            <TextBox x:Name="SizeInput" Text="10" Width="60" Margin="5" VerticalContentAlignment="Center" TextAlignment="Center"/>
             <Button x:Name="BubbleSortButton" Content="Bubble Sort" Margin="5" Width="120" Height="30" Click="BubbleSortButton_Click" IsEnabled="False"/>
             <Button x:Name="InsertionSortButton" Content="Insertion Sort" Margin="5" Width="120" Height="30" Click="InsertionSortButton_Click" IsEnabled="False"/>
             <Button x:Name="MergeSortButton" Content="Merge Sort" Margin="5" Width="120" Height="30" Click="MergeSortButton_Click" IsEnabled="False"/>
-            <Label x:Name="EnableAnimationLabel" Content="Enable Animation:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
-            <CheckBox x:Name="EnableAnimationCheckBox" VerticalAlignment="Center" Height="30" Margin="5" Checked="AnimationEnabledCheckBox_Checked" Unchecked="AnimationEnabledCheckBox_Unchecked"/>
+            <Button x:Name="EnableAnimationButton" Content="Animation: OFF" Margin="5" Width="120" Height="30" Click="EnableAnimationButton_Click"/>
+            <Button x:Name="AnimationSpeedButton" Content="Animation Speed: 1x" Margin="5" Width="120" Height="30" Click="AnimationSpeedButton_Click" IsEnabled="False"/>
             <Label x:Name="ElapsedTimeLabel" Content="Elapsed Time:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
             <Label x:Name="ActualTimeLabel" Content="0 ms" VerticalAlignment="Center" Height="30" Margin="5" />
         </StackPanel>

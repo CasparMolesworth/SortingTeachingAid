@@ -26,6 +26,8 @@ namespace SortingVisualiser
         }
 
         private bool animationsEnabled = false;
+        private ushort animationSpeed = 1;
+        private int animationDelay = 100; // Default speed in milliseconds
 
         // Randomise button is clicked and a random array is displayed
         private void RandomiseButton_Click(object sender, RoutedEventArgs e)
@@ -160,18 +162,48 @@ namespace SortingVisualiser
             return currentArray;
         }
 
-        private void AnimationEnabledCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void EnableAnimationButton_Click(object sender, RoutedEventArgs e)
         {
-            animationsEnabled = true;
-            ActualTimeLabel.Content = "n/a";
+            if (!animationsEnabled)
+            {
+                animationsEnabled = true;
+                ActualTimeLabel.Content = "n/a";
+                EnableAnimationButton.Content = "Animation: ON";
+                AnimationSpeedButton.IsEnabled = true;
+            }
+            else
+            {
+                animationsEnabled = false;
+                ActualTimeLabel.Content = "0 μs";
+                EnableAnimationButton.Content = "Animation: OFF";
+                AnimationSpeedButton.IsEnabled = false;
+            }
         }
 
-        private void AnimationEnabledCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void AnimationSpeedButton_Click(object sender, RoutedEventArgs e)
         {
-            animationsEnabled = false;
-            ActualTimeLabel.Content = "0 ms";
-
+            switch (animationSpeed)
+            {
+                case 1:
+                    animationSpeed = 2;
+                    AnimationSpeedButton.Content = "Animation Speed: 2x";
+                    animationDelay = 50;
+                    break;
+                case 2:
+                    animationSpeed = 3;
+                    AnimationSpeedButton.Content = "Animation Speed: 3x";
+                    animationDelay = 33;
+                    break;
+                case 3:
+                    animationSpeed = 1;
+                    AnimationSpeedButton.Content = "Animation Speed: 1x";
+                    animationDelay = 100;
+                    break;
+                default:
+                    throw new Exception("Something went wrong with animation speed code.");
+            }
         }
+
 
         private void DisplayElapsedTime(double ticks)
         {
