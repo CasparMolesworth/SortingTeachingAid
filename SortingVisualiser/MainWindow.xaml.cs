@@ -27,7 +27,7 @@ namespace SortingVisualiser
 
         private bool animationsEnabled = false;
         private ushort animationSpeed = 1;
-        private int animationDelay = 100; // Default speed in milliseconds
+        private int animationDelay = 100;
 
         // Randomise button is clicked and a random array is displayed
         private void RandomiseButton_Click(object sender, RoutedEventArgs e)
@@ -203,7 +203,6 @@ namespace SortingVisualiser
                     throw new Exception("Something went wrong with animation speed code.");
             }
         }
-
 
         private void DisplayElapsedTime(double ticks)
         {
