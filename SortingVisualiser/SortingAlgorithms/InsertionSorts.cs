@@ -8,7 +8,7 @@ using System.Windows.Media.Animation;
 
 namespace SortingVisualiser.SortingAlgorithms
 {
-    public static class InsertionSorts
+    public partial class InsertionSorts : Algorithm
     {
         private static Stopwatch sw = new Stopwatch();
 

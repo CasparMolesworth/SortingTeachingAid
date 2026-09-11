@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortingVisualiser.SortingAlgorithms
 {
-    public static class BubbleSorts
+    public partial class BubbleSorts : Algorithm
     {
 
         private static Stopwatch sw = new Stopwatch();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortingVisualiser.SortingAlgorithms
 {
-    class MergeSorts
+    public partial class MergeSorts : Algorithm
     {
         // Normal Merge Sort
         public static void MergeSort(int[] array)
