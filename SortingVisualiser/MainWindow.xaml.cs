@@ -235,7 +235,12 @@ namespace SortingVisualiser
             InsertionSortButton.IsEnabled = false;
             MergeSortButton.IsEnabled = false;
         }
-        #endregion
 
+
+        private void MaxSizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            SizeInput.Text = "800";
+        }
+        #endregion
     }
 }

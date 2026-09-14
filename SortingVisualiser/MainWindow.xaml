@@ -17,6 +17,7 @@
             <Button x:Name="RandomiseButton" Content="Randomise Array" Margin="5" Width="120" Height="30" Click="RandomiseButton_Click"/>
             <Label Content="Size:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
             <TextBox x:Name="SizeInput" Text="10" Width="60" Margin="5" VerticalContentAlignment="Center" TextAlignment="Center"/>
+            <Button x:Name="MaxSizeButton" Content="Max" Margin="5" Width="40" Height="30" VerticalAlignment="Center" Click="MaxSizeButton_Click"/>
             <Button x:Name="BubbleSortButton" Content="Bubble Sort" Margin="5" Width="120" Height="30" Click="BubbleSortButton_Click" IsEnabled="False"/>
             <Button x:Name="InsertionSortButton" Content="Insertion Sort" Margin="5" Width="120" Height="30" Click="InsertionSortButton_Click" IsEnabled="False"/>
             <Button x:Name="MergeSortButton" Content="Merge Sort" Margin="5" Width="120" Height="30" Click="MergeSortButton_Click" IsEnabled="False"/>

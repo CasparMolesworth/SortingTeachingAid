@@ -9,6 +9,6 @@ namespace SortingVisualiser.SortingAlgorithms
 {
     public abstract class Algorithm
     {
-        
+        public static int NumberOfComparisons;
     }
 }

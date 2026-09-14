@@ -11,7 +11,6 @@ namespace SortingVisualiser.SortingAlgorithms
     {
 
         private static Stopwatch sw = new Stopwatch();
-
         // Timed Bubble Sort
         public static void BubbleSort(int[] array, out double ticks)
         {
