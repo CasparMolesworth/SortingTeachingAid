@@ -30,9 +30,9 @@ namespace CustomRandom
             ulong value2 = BitConverter.ToUInt64(randomBytes, 0);
 
             // Third value is a random number from Cloudflare Drand
-            // ulong value3 = CloudflareDrand.SendRequestToCloudflare().Result; THIS LINE CAUSES THE PROGRAM TO CRASH - I'M WORKING ON A FIX FOR IT
+            ulong value3 = CloudflareDrand.SendRequestToCloudflare().GetAwaiter().GetResult();
 
-            seed = value1 ^ value2;
+            seed = value1 ^ value2 ^ value3;
 
             return seed;
         }

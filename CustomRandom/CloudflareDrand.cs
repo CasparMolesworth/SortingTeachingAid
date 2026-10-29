@@ -22,7 +22,7 @@ namespace CustomRandom
         {
             using HttpClient client = new HttpClient();
 
-            string json = await client.GetStringAsync("https://drand.cloudflare.com/public/latest");
+            string json = await client.GetStringAsync("https://drand.cloudflare.com/public/latest").ConfigureAwait(false);
 
             DrandResponse result = JsonSerializer.Deserialize<DrandResponse>(json) ?? throw new Exception("Invalid response");
 
