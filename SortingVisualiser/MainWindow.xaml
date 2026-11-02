@@ -5,30 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SortingVisualiser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600">
+        Title="MainWindow" Height="320" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <!--Top Buttons-->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
-            <Button x:Name="RandomiseButton" Content="Randomise Array" Margin="5" Width="120" Height="30" Click="RandomiseButton_Click"/>
-            <Label Content="Size:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
-            <TextBox x:Name="SizeInput" Text="10" Width="60" Margin="5" VerticalContentAlignment="Center" TextAlignment="Center"/>
-            <Button x:Name="MaxSizeButton" Content="Max" Margin="5" Width="40" Height="30" VerticalAlignment="Center" Click="MaxSizeButton_Click"/>
-            <Button x:Name="BubbleSortButton" Content="Bubble Sort" Margin="5" Width="120" Height="30" Click="BubbleSortButton_Click" IsEnabled="False"/>
-            <Button x:Name="InsertionSortButton" Content="Insertion Sort" Margin="5" Width="120" Height="30" Click="InsertionSortButton_Click" IsEnabled="False"/>
-            <Button x:Name="MergeSortButton" Content="Merge Sort" Margin="5" Width="120" Height="30" Click="MergeSortButton_Click" IsEnabled="False"/>
-            <Button x:Name="EnableAnimationButton" Content="Animation: OFF" Margin="5" Width="120" Height="30" Click="EnableAnimationButton_Click"/>
-            <Button x:Name="AnimationSpeedButton" Content="Animation Speed: 1x" Margin="5" Width="120" Height="30" Click="AnimationSpeedButton_Click" IsEnabled="False"/>
-            <Label x:Name="ElapsedTimeLabel" Content="Elapsed Time:" VerticalAlignment="Center" Height="30" Margin="5" Background="LightGray"/>
-            <Label x:Name="ActualTimeLabel" Content="0 ms" VerticalAlignment="Center" Height="30" Margin="5" />
-        </StackPanel>
-
-        <!--Main Panel-->
-        <UniformGrid Grid.Row="1" x:Name="VisualisingPanel" Rows="1" VerticalAlignment="Bottom"/>
+        
+        <Label Content="Sorting Visualiser" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" Grid.Row="0"/>
+        <Button Content="Open Comparison View" Margin="10" Click="OpenComparisonViewButton_Click" Grid.Row="1" Width="200" Height="30"/>
+        <Button Content="Animated Bubble Sort" Margin="10" Click="OpenAnimatedBubbleSortButton_Click" Grid.Row="2" Width="200" Height="30" IsEnabled="False"/>
+        <Button Content="Animated Insertion Sort" Margin="10" Click="OpenAnimatedInsertionSortButton_Click" Grid.Row="3" Width="200" Height="30" IsEnabled="False"/>
+        <Button Content="Animated Merge Sort" Margin="10" Click="OpenAnimatedMergeSortButton_Click" Grid.Row="4" Width="200" Height="30" IsEnabled="False"/>
+        <Label Content="By Caspar Molesworth" Grid.Row="5" Margin="5"/>
     </Grid>
 </Window>
 
